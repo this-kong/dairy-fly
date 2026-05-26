@@ -35,10 +35,19 @@ export async function POST(request: NextRequest) {
   const bookingReference = 'DF-' + crypto.randomBytes(4).toString('hex').toUpperCase();
 
   // 添加乘客到 schedules
-  await schedules.updateOne(
-    { _id: new ObjectId(scheduleId) },
-    { $push: { passengers: { email: passengerEmail, name: passengerName, title, bookingReference } } }
-  );
+await schedules.updateOne(
+  { _id: new ObjectId(scheduleId) },
+  {
+    $push: {
+      passengers: {
+        email: passengerEmail,
+        name: passengerName,
+        title,
+        bookingReference
+      }
+    }
+  } as any
+);
 
   // 同时维护 bookings 集合（可选但推荐）
   // const bookings = db.collection('bookings');
