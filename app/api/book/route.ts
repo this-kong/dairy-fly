@@ -12,8 +12,8 @@ export async function POST(request: NextRequest) {
   }
 
   const db = await connectDB();
-  const schedules = db.collection('schedules');
-
+  //const schedules = db.collection('schedules');
+  const schedules = db.collection<any>('schedules');
   // 查找航班
   const schedule = await schedules.findOne({ _id: new ObjectId(scheduleId) });
   if (!schedule) {

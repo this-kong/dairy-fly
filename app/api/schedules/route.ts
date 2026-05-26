@@ -9,7 +9,8 @@ export async function GET(request: Request) {
   const dest = url.searchParams.get('dest');
 
   const db = await connectDB();
-  const schedules = db.collection('schedules');
+  //const schedules = db.collection('schedules');
+  const schedules = db.collection<any>('schedules');
 
   // 构建查询条件
   const query: any = {};
