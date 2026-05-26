@@ -1,4 +1,3 @@
-// import { connectDB, getClient } from '@/lib/mongodb';
 import { connectDB } from '@/lib/mongodb';
 import { NextRequest, NextResponse } from 'next/server';
 import { ObjectId } from 'mongodb';
