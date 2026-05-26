@@ -41,18 +41,18 @@ export async function DELETE(request: NextRequest) {
     });
 
     // 删除 schedule.passengers 里的记录
-    await schedules.updateOne(
-      {
-        'passengers.bookingReference': bookingReference
-      },
-      {
-        $pull: {
-          passengers: {
-            bookingReference
-          }
-        }
+await schedules.updateOne(
+  {
+    'passengers.bookingReference': bookingReference
+  },
+  {
+    $pull: {
+      passengers: {
+        bookingReference: bookingReference
       }
-    );
+    }
+  } as any
+);
 
     return NextResponse.json({
       success: true,
