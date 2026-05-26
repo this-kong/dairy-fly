@@ -16,8 +16,10 @@ export async function DELETE(request: NextRequest) {
 
     const db = await connectDB();
 
-    const schedules = db.collection('schedules');
-    const bookings = db.collection('bookings');
+    //const schedules = db.collection('schedules');
+    const schedules = db.collection<any>('schedules');
+    //const bookings = db.collection('bookings');
+    const bookings = db.collection<any>('bookings');
 
     // 确认订单存在
     const booking = await bookings.findOne({
